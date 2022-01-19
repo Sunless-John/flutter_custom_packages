@@ -7,9 +7,7 @@ part 'app_user.dart';
 class FirebaseAuthRepo {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
-  Stream<AppUser?> authStateChanges() {
-    return _firebaseAuth.authStateChanges().map((user) => user != null ? AppUser.fromFirebaseUser(user) : null);
-  }
+  Stream<AppUser?> get authStateChanges => _firebaseAuth.authStateChanges().map((user) => user != null ? AppUser.fromFirebaseUser(user) : null);
 
   // Future<AppUser> signInAnonymously() async {
   //   final userCredential = await _firebaseAuth.signInAnonymously();

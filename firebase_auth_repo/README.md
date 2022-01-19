@@ -15,11 +15,11 @@ This package manages firebase authentication.
 
 ## Features
 
--Sign In with email and password
--Sign out
--Send password reset email
--Create user with email and password
--Get stream of authentication changes
+- Sign In with email and password
+- Sign out
+- Send password reset email
+- Create user with email and password
+- Get stream of authentication changes
 
 
 ## Getting started

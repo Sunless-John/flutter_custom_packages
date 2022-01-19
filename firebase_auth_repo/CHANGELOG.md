@@ -1,7 +1,11 @@
-## 0.0.1
+## [0.0.1.2] 19-01-2022
 
-* Added FirebaseAuthRepo.
+* Changed authChanges function to getter
 
-## 0.0.1.1
+## [0.0.1.1] 19-01-2022
 
-* Added name params to FirebaseAuthRepo
+* Added name params to functions
+
+## [0.0.1] 19-01-2022
+
+* Added repo.
