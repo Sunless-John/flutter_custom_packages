@@ -16,7 +16,7 @@ class FirebaseAuthRepo {
   //   return AppUser.fromFirebaseUser(userCredential.user);
   // }
 
-  Future<AppUser?> signInWithEmailAndPassword(String email, String password) async {
+  Future<AppUser?> signInWithEmailAndPassword({required String email, required String password}) async {
     final userCredential = await _firebaseAuth.signInWithCredential(EmailAuthProvider.credential(
       email: email,
       password: password,
@@ -24,16 +24,17 @@ class FirebaseAuthRepo {
     return userCredential.user != null ? AppUser.fromFirebaseUser(userCredential.user!) : null;
   }
 
-  Future<AppUser?> createUserWithEmailAndPassword(String email, String password) async {
+  Future<AppUser?> createUserWithEmailAndPassword({required String email, required String password}) async {
     final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
     return userCredential.user != null ? AppUser.fromFirebaseUser(userCredential.user!) : null;
   }
 
-  Future<void> sendPasswordResetEmail(String email) async {
+  Future<void> sendPasswordResetEmail({required String email}) async {
     await _firebaseAuth.sendPasswordResetEmail(email: email);
   }
 
-  AppUser? get currentUser => _firebaseAuth.currentUser != null ? AppUser.fromFirebaseUser(_firebaseAuth.currentUser!) : null;
+  AppUser? get currentUser =>
+      _firebaseAuth.currentUser != null ? AppUser.fromFirebaseUser(_firebaseAuth.currentUser!) : null;
 
   Future<void> signOut() async {
     return _firebaseAuth.signOut();
