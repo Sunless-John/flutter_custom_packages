@@ -18,17 +18,18 @@ class FirebaseAuthRepo {
     final userCredential = await _firebaseAuth.signInWithCredential(EmailAuthProvider.credential(
       email: email,
       password: password,
-    ));
+    )).catchError((e) => print(e), test: (e) => e is FirebaseAuthException);
     return userCredential.user != null ? AppUser.fromFirebaseUser(userCredential.user!) : null;
   }
 
   Future<AppUser?> createUserWithEmailAndPassword({required String email, required String password}) async {
-    final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
+    final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password)
+    .catchError((e) => print(e), test: (e) => e is FirebaseAuthException);
     return userCredential.user != null ? AppUser.fromFirebaseUser(userCredential.user!) : null;
   }
 
   Future<void> sendPasswordResetEmail({required String email}) async {
-    await _firebaseAuth.sendPasswordResetEmail(email: email);
+    await _firebaseAuth.sendPasswordResetEmail(email: email).catchError((e) => print(e), test: (e) => e is FirebaseAuthException);
   }
 
   AppUser? get currentUser =>
