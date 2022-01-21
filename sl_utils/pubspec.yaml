@@ -1,6 +1,6 @@
 name: sl_utils
-description: A package that manages firebase authentication.
-version: 0.0.2+1
+description: A package that contains my most used utils.
+version: 0.0.1
 homepage:
 
 environment:

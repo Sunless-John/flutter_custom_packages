@@ -1,6 +1,6 @@
 name: firebase_auth_repo
-description: A new Flutter package project.
-version: 0.0.1
+description: A package that manages firebase authentication.
+version: 0.0.2+1
 homepage:
 
 environment:
