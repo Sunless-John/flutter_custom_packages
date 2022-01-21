@@ -7,7 +7,8 @@ part 'app_user.dart';
 class FirebaseAuthRepo {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
-  Stream<AppUser?> get authStateChanges => _firebaseAuth.authStateChanges().map((user) => user != null ? AppUser.fromFirebaseUser(user) : null);
+  Stream<AppUser?> get authStateChanges =>
+      _firebaseAuth.authStateChanges().map((user) => user != null ? AppUser.fromFirebaseUser(user) : null);
 
   // Future<AppUser> signInAnonymously() async {
   //   final userCredential = await _firebaseAuth.signInAnonymously();
@@ -15,21 +16,34 @@ class FirebaseAuthRepo {
   // }
 
   Future<AppUser?> signInWithEmailAndPassword({required String email, required String password}) async {
-    final userCredential = await _firebaseAuth.signInWithCredential(EmailAuthProvider.credential(
-      email: email,
-      password: password,
-    )).catchError((e) => print(e), test: (e) => e is FirebaseAuthException);
-    return userCredential.user != null ? AppUser.fromFirebaseUser(userCredential.user!) : null;
+    try {
+      final userCredential = await _firebaseAuth.signInWithCredential(EmailAuthProvider.credential(
+        email: email,
+        password: password,
+      ));
+      return userCredential.user != null ? AppUser.fromFirebaseUser(userCredential.user!) : null;
+    } catch (e) {
+      print(e);
+      return null;
+    }
   }
 
   Future<AppUser?> createUserWithEmailAndPassword({required String email, required String password}) async {
-    final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password)
-    .catchError((e) => print(e), test: (e) => e is FirebaseAuthException);
-    return userCredential.user != null ? AppUser.fromFirebaseUser(userCredential.user!) : null;
+    try {
+      final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
+      return userCredential.user != null ? AppUser.fromFirebaseUser(userCredential.user!) : null;
+    } catch (e) {
+      print(e);
+      return null;
+    }
   }
 
   Future<void> sendPasswordResetEmail({required String email}) async {
-    await _firebaseAuth.sendPasswordResetEmail(email: email).catchError((e) => print(e), test: (e) => e is FirebaseAuthException);
+    try {
+      await _firebaseAuth.sendPasswordResetEmail(email: email);
+    } catch (e) {
+      print(e);
+    }
   }
 
   AppUser? get currentUser =>
