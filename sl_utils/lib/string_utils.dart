@@ -1,3 +1,5 @@
+part of sl_utils;
+
 extension StringExtension on String {
   String capitalize({lowerRemainingLetters = false}) {    
       if (lowerRemainingLetters) {
