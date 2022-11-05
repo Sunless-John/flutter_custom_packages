@@ -10,3 +10,7 @@
 ## 0.0.3
 
 - Added ControllersUtils.
+
+## 0.0.4
+
+- Added ListUtils.

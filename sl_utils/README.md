@@ -7,3 +7,4 @@ This package contains my most used utils.
 - TimeUtils
 - StringUtils
 - ControllersUtils
+- ListUtils
