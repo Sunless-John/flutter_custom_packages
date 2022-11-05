@@ -11,10 +11,12 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-This repository contains my most used logic packages.
+This packages contains some general purpose reusable widgets & widget related utilities.
 
-## Features
+## Utilities
 
-- FirebaseAuthRepo package
-- SLUtils package
-- SLUI package
+- WidgetListUtils
+
+## Widgets
+
+- Loading Button
